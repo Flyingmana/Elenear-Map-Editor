@@ -7,49 +7,51 @@
  */
 
 // class / jsonobjekt, klappt bis jetzt nicht so ganz
-var MapEdit = {
-
+MapEdit = {
     mapHeight : 400,
     mapWidth : 400,
-    fieldWidth : parseInt(this.mapWidth/25),
-    fieldHeight : parseInt(this.mapHeight/25),
-    paper : Raphael(document.getElementById("map"), this.mapWidth, this.mapHeight),
+    fieldWidth : parseInt(this.mapWidth/25,10),
+    fieldHeight : parseInt(this.mapHeight/25,10),
+    jquery : null,
+//    paper : Raphael(
+//        document.getElementById("map"), this.mapWidth, this.mapHeight
+//    ),
 
-    __construct : function ()
+    __construct : function (jquery)
     {
-        
+        this.jquery = jquery;
     },
 
-    loadMap : function () 
+    loadMap : function (myvar ) 
     {
         // Feldgrößen neuladen falls geändert
-        this.fieldWidth  = parseInt(this.mapWidth/25);
-        this.fieldHeight = parseInt(this.mapHeight/25);
+        this.fieldWidth  = parseInt(this.mapWidth/25,10);
+        this.fieldHeight = parseInt(this.mapHeight/25,10);
         this.paper = Raphael(document.getElementById("map"), this.mapWidth, this.mapHeight);
         // Müll wegbringen
         document.getElementById("map").innerHTML='';
         // ?
-        $.get('js/testmap.json',
+        this.jquery.get('js/testmap.json',
             {},
             function (data) {
-                this.render(data.map);
+                this.renderMap(data.map);
             },
             'json'
-        )
+        );
     },
 
     changeSize : function (width, height ) 
     {
-        this.mapHeight=mapHeight+parseInt(width);
-        this.mapWidth=mapWidth+parseInt(height);
+        this.mapHeight=this.mapHeight+parseInt(width,10);
+        this.mapWidth=this.mapWidth+parseInt(height,10);
         this.loadMap();
     },
 
     setSize : function (width, height ) 
     {
-        this.mapHeight=parseInt(width);
-        this.mapWidth=parseInt(height);
-        loadMap();
+        this.mapHeight=parseInt(width,10);
+        this.mapWidth=parseInt(height,10);
+        this.loadMap();
     },
 
     getFieldcolor : function (typ ) 
@@ -80,19 +82,19 @@ var MapEdit = {
         }
     },
 
-    render : function (map ) 
+    renderMap : function (map ) 
     {
-        jquery.each(map, function(key, value) {
-            paper.rect(
-                (value.x-1)*fieldWidth,
-                (value.y-1)*fieldHeight,
-                fieldWidth,
-                fieldHeight
+        this.jquery.each(map, function(key, value) {
+            this.paper.rect(
+                (value.x-1)*this.fieldWidth,
+                (value.y-1)*this.fieldHeight,
+                this.fieldWidth,
+                this.fieldHeight
             ).attr(
-                {fill: get_fieldcolor(value.typ), title: get_fieldname(value.typ)}
+                {fill: this.getFieldcolor(value.typ), title: this.getFieldname(value.typ)}
             ).hover(
                 function(){
-                    jquery("#map_info").html("Feldname: "+ this.attr("title") );
+                    this.jquery("#map_info").html("Feldname: "+ this.attr("title") );
                 },function(){
 
                 }
@@ -100,4 +102,6 @@ var MapEdit = {
         });
     }
 
-}
+};
+
+MapEdit.__construct($);
