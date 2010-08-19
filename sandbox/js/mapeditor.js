@@ -76,21 +76,22 @@ MapEdit = {
 
     renderMap : function (map ) 
     {
+        var self = this;
         jQuery.each
         (
             map, 
             function(key, value) 
             {
-                this.paper.rect(
-                    (value.x-1)*this.fieldWidth,
-                    (value.y-1)*this.fieldHeight,
-                    this.fieldWidth,
-                    this.fieldHeight
+                self.paper.rect(
+                    (value.x-1)*self.fieldWidth,
+                    (value.y-1)*self.fieldHeight,
+                    self.fieldWidth,
+                    self.fieldHeight
                 ).attr(
-                    {fill: this.getFieldcolor(value.typ), title: this.getFieldname(value.typ)}
+                    {fill: self.getFieldcolor(value.typ), title: self.getFieldname(value.typ)}
                 ).hover(
                     function () {
-                        jQuery("#map_info").html("Feldname: "+ this.attr("title") );
+                        jQuery("#map_info").html("Feldname: "+ self.attr("title") );
                     }, function () {
 
                     }
