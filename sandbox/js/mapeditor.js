@@ -3,7 +3,6 @@
  * 1 => Wiese
  * 2 => Berg
  * 3 => Wasser
- *
  */
 
 // class / jsonobjekt, klappt bis jetzt nicht so ganz
