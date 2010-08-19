@@ -97,7 +97,7 @@ var MapEdit = {
             ).hover(
                 function () {
                     window.jQuery(
-                        "#map_info").html("Feldname: "+ self.attr("title") 
+                        "#map_info").html("Feldname: "+ this.attr("title")
                     );
                 }, function () {
 
