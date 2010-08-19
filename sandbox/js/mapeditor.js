@@ -13,10 +13,6 @@ MapEdit = {
     fieldWidth : parseInt(this.mapWidth/25,10),
     fieldHeight : parseInt(this.mapHeight/25,10),
 
-//    paper : Raphael(
-//        document.getElementById("map"), this.mapWidth, this.mapHeight
-//    ),
-
     loadMap : function (myvar ) 
     {
         // Feldgrößen neuladen falls geändert
@@ -26,10 +22,11 @@ MapEdit = {
         // Müll wegbringen
         document.getElementById("map").innerHTML='';
         // ?
+        var self = this;
         jQuery.get('js/testmap.json',
             {},
             function (data) {
-                this.renderMap(data.map);
+                self.renderMap(data.map);
             },
             'json'
         );
