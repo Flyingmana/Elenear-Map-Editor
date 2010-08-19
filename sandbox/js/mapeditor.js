@@ -14,18 +14,19 @@ var MapEdit = {
 
     loadMap : function (myvar ) 
     {
+        var self = this;
+
         // Feldgrößen neuladen falls geändert
-        this.fieldWidth  = parseInt(this.mapWidth/25, 10);
-        this.fieldHeight = parseInt(this.mapHeight/25, 10);
-        this.paper = window.Raphael(
+        self.fieldWidth  = parseInt(self.mapWidth/25, 10);
+        self.fieldHeight = parseInt(self.mapHeight/25, 10);
+        self.paper = window.Raphael(
             window.document.getElementById("map"), 
-            this.mapWidth, 
-            this.mapHeight
+            self.mapWidth, 
+            self.mapHeight
         );
         // Müll wegbringen
         window.document.getElementById("map").innerHTML="";
         // ?
-        var self = this;
         window.jQuery.get("js/testmap.json",
             {},
             function (data) {
@@ -80,6 +81,7 @@ var MapEdit = {
     renderMap : function (map ) 
     {
         var self = this;
+
         window.jQuery.each
         (
             map, 

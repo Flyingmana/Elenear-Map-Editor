@@ -1,5 +1,5 @@
 {
-    "name": "flyingmana",
+    "name": "test",
     "map": [
         { "x":1, "y":1, "typ": 3 },
         { "x":1, "y":2, "typ": 1 },

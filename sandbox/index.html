@@ -8,20 +8,23 @@
     <script src="js/raphael.js" type="text/javascript" ></script>
     <script src="js/mapeditor.js" type="text/javascript" ></script>
   </head>
-  <body onload="MapEdit.loadMap();">
-      Mapedit: <a onclick="alert('Kartengröße: '+MapEdit.mapWidth+'x'+MapEdit.mapHeight);MapEdit.loadMap();false;" href="#">Laden</a> <br/>
-      Zoom: 
-          <a onclick="MapEdit.changeSize(-200,-200);" href="#">--</a>
-          <a onclick="MapEdit.changeSize(-50,-50);" href="#">-</a>
-          <a onclick="MapEdit.changeSize(50,50);" href="#">+</a>
-          <a onclick="MapEdit.changeSize(200,200);" href="#">++</a><br/>
-      Zoom: 
-            <a onclick="MapEdit.setSize(50,50);" href="#">25%</a> 
-            <a onclick="MapEdit.setSize(100,100);" href="#">50%</a> 
-          <a onclick="MapEdit.setSize(200,200);" href="#">100%</a>
-          <a onclick="MapEdit.setSize(400,400);" href="#">200%</a>
-          <a onclick="MapEdit.setSize(800,800);" href="#">400%</a>
-          <a onclick="MapEdit.setSize(1600,1600);" href="#">800%</a><br/>
+<body onload="MapEdit.loadMap();">
+Mapedit: 
+    <a onclick="alert('Kartengröße: '+MapEdit.mapWidth+'x'+MapEdit.mapHeight);">Info</a> 
+    <a onclick="MapEdit.loadMap();false;" href="#">Laden</a>
+    <a onclick='window.jQuery.get("js/testmap.json",{},function(data){MapEdit.renderMap(data.map);},"json");' href="#">Laden+</a><br/>
+Zoom: 
+    <a onclick="MapEdit.changeSize(-200,-200);" href="#">--</a>
+    <a onclick="MapEdit.changeSize(-50,-50);" href="#">-</a>
+    <a onclick="MapEdit.changeSize(50,50);" href="#">+</a>
+    <a onclick="MapEdit.changeSize(200,200);" href="#">++</a><br/>
+Zoom: 
+    <a onclick="MapEdit.setSize(50,50);" href="#">25%</a> 
+    <a onclick="MapEdit.setSize(100,100);" href="#">50%</a> 
+    <a onclick="MapEdit.setSize(200,200);" href="#">100%</a>
+    <a onclick="MapEdit.setSize(400,400);" href="#">200%</a>
+    <a onclick="MapEdit.setSize(800,800);" href="#">400%</a>
+    <a onclick="MapEdit.setSize(1600,1600);" href="#">800%</a><br/>
       <br/>
       <div id="map_info"></div>
 
