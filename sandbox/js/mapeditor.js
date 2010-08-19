@@ -9,7 +9,7 @@
 var MapEdit = {
     mapHeight : 400,
     mapWidth : 400,
-    mapFile : "js/testmap.json",
+    mapFile : "",
     fieldWidth : parseInt(this.mapWidth/25, 10),
     fieldHeight : parseInt(this.mapHeight/25, 10),
     paper: null,
