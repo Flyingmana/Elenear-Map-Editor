@@ -7,42 +7,46 @@
  */
 
 // class / jsonobjekt, klappt bis jetzt nicht so ganz
-MapEdit = {
+var MapEdit = {
     mapHeight : 400,
     mapWidth : 400,
-    fieldWidth : parseInt(this.mapWidth/25,10),
-    fieldHeight : parseInt(this.mapHeight/25,10),
+    fieldWidth : parseInt(this.mapWidth/25, 10),
+    fieldHeight : parseInt(this.mapHeight/25, 10),
 
     loadMap : function (myvar ) 
     {
         // Feldgrößen neuladen falls geändert
-        this.fieldWidth  = parseInt(this.mapWidth/25,10);
-        this.fieldHeight = parseInt(this.mapHeight/25,10);
-        this.paper = Raphael(document.getElementById("map"), this.mapWidth, this.mapHeight);
+        this.fieldWidth  = parseInt(this.mapWidth/25, 10);
+        this.fieldHeight = parseInt(this.mapHeight/25, 10);
+        this.paper = window.Raphael(
+            window.document.getElementById("map"), 
+            this.mapWidth, 
+            this.mapHeight
+        );
         // Müll wegbringen
-        document.getElementById("map").innerHTML='';
+        window.document.getElementById("map").innerHTML="";
         // ?
         var self = this;
-        jQuery.get('js/testmap.json',
+        window.jQuery.get("js/testmap.json",
             {},
             function (data) {
                 self.renderMap(data.map);
             },
-            'json'
+            "json"
         );
     },
 
     changeSize : function (width, height ) 
     {
-        this.mapHeight=this.mapHeight+parseInt(width,10);
-        this.mapWidth=this.mapWidth+parseInt(height,10);
+        this.mapHeight=this.mapHeight+parseInt(width, 10);
+        this.mapWidth=this.mapWidth+parseInt(height, 10);
         this.loadMap();
     },
 
     setSize : function (width, height ) 
     {
-        this.mapHeight=parseInt(width,10);
-        this.mapWidth=parseInt(height,10);
+        this.mapHeight=parseInt(width, 10);
+        this.mapWidth=parseInt(height, 10);
         this.loadMap();
     },
 
@@ -77,7 +81,7 @@ MapEdit = {
     renderMap : function (map ) 
     {
         var self = this;
-        jQuery.each
+        window.jQuery.each
         (
             map, 
             function(key, value) 
@@ -88,10 +92,15 @@ MapEdit = {
                     self.fieldWidth,
                     self.fieldHeight
                 ).attr(
-                    {fill: self.getFieldcolor(value.typ), title: self.getFieldname(value.typ)}
+                    {
+                        fill: self.getFieldcolor(value.typ), 
+                        title: self.getFieldname(value.typ)
+                    }
                 ).hover(
                     function () {
-                        jQuery("#map_info").html("Feldname: "+ self.attr("title") );
+                        window.jQuery(
+                            "#map_info").html("Feldname: "+ self.attr("title") 
+                        );
                     }, function () {
 
                     }
@@ -101,3 +110,4 @@ MapEdit = {
     }
 
 };
+
