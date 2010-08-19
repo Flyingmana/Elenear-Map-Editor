@@ -13,7 +13,7 @@ var MapEdit = {
     fieldHeight : parseInt(this.mapHeight/25, 10),
     paper: null,
 
-    loadMap : function (myvar ) 
+    loadMap : function (mapFile )
     {
         // Feldgrößen neuladen falls geändert
         this.fieldWidth  = parseInt(this.mapWidth/25, 10);
@@ -28,7 +28,7 @@ var MapEdit = {
 
         var self = this;
         // ?
-        window.jQuery.get("js/testmap.json",
+        window.jQuery.get(mapFile,
             {},
             function (data) {
                 self.renderMap(data.map);

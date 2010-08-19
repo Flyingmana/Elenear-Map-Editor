@@ -8,10 +8,11 @@
     <script src="js/raphael.js" type="text/javascript" ></script>
     <script src="js/mapeditor.js" type="text/javascript" ></script>
   </head>
-<body onload="MapEdit.loadMap();">
+<body onload="MapEdit.loadMap('js/testmap.json');">
 Mapedit: 
     <a onclick="alert('Kartengröße: '+MapEdit.mapWidth+'x'+MapEdit.mapHeight);">Info</a> 
-    <a onclick="MapEdit.loadMap();false;" href="#">Laden</a>
+    <a onclick="MapEdit.loadMap('js/testmap.json');false;" href="#">Lade 25x25 Map</a>
+    <a onclick="MapEdit.loadMap('js/testmap_big.json');false;" href="#">Lade 250x250 Map</a>
     <a onclick='window.jQuery.get("js/testmap.json",{},function(data){MapEdit.renderMap(data.map);},"json");' href="#">Laden+</a><br/>
 Zoom: 
     <a onclick="MapEdit.changeSize(-200,-200);" href="#">--</a>
