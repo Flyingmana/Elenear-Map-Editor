@@ -9,12 +9,18 @@
 var MapEdit = {
     mapHeight : 400,
     mapWidth : 400,
+    mapFile : "js/testmap.json",
     fieldWidth : parseInt(this.mapWidth/25, 10),
     fieldHeight : parseInt(this.mapHeight/25, 10),
     paper: null,
 
     loadMap : function (mapFile )
     {
+        if (mapFile==null)
+        {
+             mapFile = this.mapFile;
+        }
+
         // Feldgrößen neuladen falls geändert
         this.fieldWidth  = parseInt(this.mapWidth/25, 10);
         this.fieldHeight = parseInt(this.mapHeight/25, 10);
