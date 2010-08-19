@@ -12,15 +12,10 @@ MapEdit = {
     mapWidth : 400,
     fieldWidth : parseInt(this.mapWidth/25,10),
     fieldHeight : parseInt(this.mapHeight/25,10),
-    jquery : null,
+
 //    paper : Raphael(
 //        document.getElementById("map"), this.mapWidth, this.mapHeight
 //    ),
-
-    __construct : function (jquery)
-    {
-        this.jquery = jquery;
-    },
 
     loadMap : function (myvar ) 
     {
@@ -31,7 +26,7 @@ MapEdit = {
         // Müll wegbringen
         document.getElementById("map").innerHTML='';
         // ?
-        this.jquery.get('js/testmap.json',
+        jQuery.get('js/testmap.json',
             {},
             function (data) {
                 this.renderMap(data.map);
@@ -84,24 +79,27 @@ MapEdit = {
 
     renderMap : function (map ) 
     {
-        this.jquery.each(map, function(key, value) {
-            this.paper.rect(
-                (value.x-1)*this.fieldWidth,
-                (value.y-1)*this.fieldHeight,
-                this.fieldWidth,
-                this.fieldHeight
-            ).attr(
-                {fill: this.getFieldcolor(value.typ), title: this.getFieldname(value.typ)}
-            ).hover(
-                function () {
-                    this.jquery("#map_info").html("Feldname: "+ this.attr("title") );
-                }, function () {
+        jQuery.each
+        (
+            map, 
+            function(key, value) 
+            {
+                this.paper.rect(
+                    (value.x-1)*this.fieldWidth,
+                    (value.y-1)*this.fieldHeight,
+                    this.fieldWidth,
+                    this.fieldHeight
+                ).attr(
+                    {fill: this.getFieldcolor(value.typ), title: this.getFieldname(value.typ)}
+                ).hover(
+                    function () {
+                        jQuery("#map_info").html("Feldname: "+ this.attr("title") );
+                    }, function () {
 
-                }
-            )
-        });
+                    }
+                );
+            }
+        );
     }
 
 };
-
-MapEdit.__construct($);
