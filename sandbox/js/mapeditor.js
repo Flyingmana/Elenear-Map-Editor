@@ -11,21 +11,22 @@ var MapEdit = {
     mapWidth : 400,
     fieldWidth : parseInt(this.mapWidth/25, 10),
     fieldHeight : parseInt(this.mapHeight/25, 10),
+    paper: null,
 
     loadMap : function (myvar ) 
     {
-        var self = this;
-
         // Feldgrößen neuladen falls geändert
-        self.fieldWidth  = parseInt(self.mapWidth/25, 10);
-        self.fieldHeight = parseInt(self.mapHeight/25, 10);
-        self.paper = window.Raphael(
-            window.document.getElementById("map"), 
-            self.mapWidth, 
-            self.mapHeight
-        );
+        this.fieldWidth  = parseInt(this.mapWidth/25, 10);
+        this.fieldHeight = parseInt(this.mapHeight/25, 10);
         // Müll wegbringen
         window.document.getElementById("map").innerHTML="";
+        this.paper = window.Raphael(
+            window.document.getElementById("map"), 
+            this.mapWidth, 
+            this.mapHeight
+        );
+
+        var self = this;
         // ?
         window.jQuery.get("js/testmap.json",
             {},
@@ -82,32 +83,27 @@ var MapEdit = {
     {
         var self = this;
 
-        window.jQuery.each
-        (
-            map, 
-            function(key, value) 
-            {
-                self.paper.rect(
-                    (value.x-1)*self.fieldWidth,
-                    (value.y-1)*self.fieldHeight,
-                    self.fieldWidth,
-                    self.fieldHeight
-                ).attr(
-                    {
-                        fill: self.getFieldcolor(value.typ), 
-                        title: self.getFieldname(value.typ)
-                    }
-                ).hover(
-                    function () {
-                        window.jQuery(
-                            "#map_info").html("Feldname: "+ self.attr("title") 
-                        );
-                    }, function () {
+        window.jQuery.each (map, function(key, value) {
+            self.paper.rect(
+                (value.x-1)*self.fieldWidth,
+                (value.y-1)*self.fieldHeight,
+                self.fieldWidth,
+                self.fieldHeight
+            ).attr(
+                {
+                    fill: self.getFieldcolor(value.typ), 
+                    title: self.getFieldname(value.typ)
+                }
+            ).hover(
+                function () {
+                    window.jQuery(
+                        "#map_info").html("Feldname: "+ self.attr("title") 
+                    );
+                }, function () {
 
-                    }
-                );
-            }
-        );
+                }
+            );
+        });
     }
 
 };
