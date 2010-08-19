@@ -15,7 +15,7 @@
         ';
     for($x = 1; $x<=$count_x; $x++){
         for($y = 1; $y<=$count_y; $y++){
-            echo "\t\t{ \"x\":$x, \"y\":$y, \"typ\": ".rand(1,3)." },".PHP_EOL;
+            echo "\t\t{ \"x\":$x, \"y\":$y, \"typ\": ".rand(1,3)." },".PHP_EOL;// @todo letztes komma muss per hand entfernt werden
         }
     };
     echo '    ]
