@@ -93,12 +93,12 @@ MapEdit = {
             ).attr(
                 {fill: this.getFieldcolor(value.typ), title: this.getFieldname(value.typ)}
             ).hover(
-                function(){
+                function () {
                     this.jquery("#map_info").html("Feldname: "+ this.attr("title") );
-                },function(){
+                }, function () {
 
                 }
-            );
+            )
         });
     }
 
