@@ -3,6 +3,23 @@
  * and open the template in the editor.
  */
 
+var mapheight = 400;
+var mapwidth = 400;
+
+function changeSize(width, height) 
+{
+    mapheight=mapheight+parseInt(width);
+    mapwidth=mapwidth+parseInt(height);
+    loadMap();
+}
+
+function setSize(width, height) 
+{
+    mapheight=parseInt(width);
+    mapwidth=parseInt(height);
+    loadMap();
+}
+
 function render_testmap($map){
 
     var get_fieldcolor = function(typ){
@@ -14,13 +31,13 @@ function render_testmap($map){
          */
         switch (typ) {
             case 1:
-                return "green";
+                return "#A5BF36";
             case 2:
-                return "gray";
+                return "#B7C3C3";
             case 3:
-                return "blue";
+                return "#145678";
             default:
-                return "";
+                return "#f00";
         }
 
     }
@@ -43,17 +60,17 @@ function render_testmap($map){
         }
 
     }
+    
 
+    var paper = Raphael(document.getElementById("map"), mapwidth, mapheight);
+    var f_width  = parseInt(mapwidth/25);
+    var f_height = parseInt(mapheight/25);
 
-    var paper = Raphael(document.getElementById("map"), 600, 600);
-    //var paper = Raphael(10, 10, 320, 200);
-    var f_width  = 20;
-    var f_height = 20;
 
     $.each($map, function(key, value){
         paper.rect(
-            value.x*f_width,
-            value.y*f_height,
+            (value.x-1)*f_width,
+            (value.y-1)*f_height,
             f_width,
             f_height
         ).attr(
@@ -67,8 +84,4 @@ function render_testmap($map){
         );
     });
 
-//    paper.rect(10, 10, f_width, f_height).attr({fill: "green"});
-//    paper.rect(30, 10, f_width, f_height);
-//    paper.rect(10, 30, f_width, f_height);
-//    paper.rect(30, 30, f_width, f_height);
 }
