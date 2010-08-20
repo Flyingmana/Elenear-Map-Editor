@@ -140,6 +140,12 @@ var MapEdit = {
         }
         this.mapJson=m;
         this.renderMap();
+    },
+
+    // Speichern
+    save : function (name ) 
+    {
+        alert(this.mapJson.toSource());
     }
 
 };
