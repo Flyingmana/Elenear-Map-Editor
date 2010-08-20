@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
     $count_x = 25;
@@ -9,16 +10,19 @@
         3 => "Wasser"
     );
 
-    echo '{
-    "name": "flyingmana",
-    "map": [
-        ';
+    $data = new stdClass();
+    $data->name = "flyingmana";
+    $data->map = array();
     for($x = 1; $x<=$count_x; $x++){
         for($y = 1; $y<=$count_y; $y++){
-            echo "\t\t{ \"x\":$x, \"y\":$y, \"typ\": ".rand(1,3)." },".PHP_EOL;// @todo letztes komma muss per hand entfernt werden
+            $field = new stdClass();
+            $field->x = $x;
+            $field->y = $y;
+            $field->typ = rand(1,3);
+            $data->map[] = $field;
         }
     };
-    echo '    ]
-}'.PHP_EOL;
+
+    echo json_encode($data);
 
 ?>
