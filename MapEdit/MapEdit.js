@@ -27,7 +27,7 @@ var MapEdit = {
         {
             if (x<this.mapX && x>=0)
             {
-                content = content+'<div class="row">';
+                content = content+'<div>';
                 for (var y in mapArray[x])
                 {
                     if (y<this.mapY && y>=0)
@@ -40,9 +40,6 @@ var MapEdit = {
                 content = content+'</div>';
             }
         }
-        content = content+'<div class="i1 fixed">Wiese</div>';
-        content = content+'<div class="i2 fixed">Berg</div>';
-        content = content+'<div class="i3 fixed">Wasser</div>';
         window.document.getElementById("map").innerHTML=content;
     },
 
@@ -85,7 +82,7 @@ var MapEdit = {
         x = this.mapX;
         y = this.mapY;
         this.zoom = size;
-        content = '#map{width:'+size*x+'px;height:'+size*y+'px}#map a{width:'+size+'px;height:'+size+'px}#map .row{width:'+size+'px}';
+        content = '#map{width:'+size*x+'px;height:'+size*y+'px}#map a{width:'+size+'px;height:'+size+'px}#map>div{width:'+size+'px}';
         window.document.getElementById("mapcss").innerHTML=content;
     },
 
