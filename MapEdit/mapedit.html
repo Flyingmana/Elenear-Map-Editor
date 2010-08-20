@@ -31,18 +31,18 @@
         font-size:0;
         margin:auto;
     }
-    #map > a {
+    #map a {
         /* width, eight by script */
         display:inline-block;
         overflow:hidden;
     }
-    #map > a.t1 {
+    #map a.t1 {
         background-color:#145678;
     }
-    #map > a.t2 {
+    #map a.t2 {
         background-color:#A5BF36;
     }
-    #map > a.t3 {
+    #map a.t3 {
         background-color:#B7C3C3;
     }
     .zoommenu {
@@ -61,24 +61,9 @@
         top:-1px;
         left:349px;
     }
-    #map div {
-        display:none;
-        position:fixed;
-        bottom:-1px;
-        left:111px;
+    #map > div { /*row*/
+        display:inline-block;
     }
-    /*
-    Machts sehr langsam:
-    #map .t1:hover ~ div.i1 {
-        display:block;
-    }
-    #map .t2:hover ~ div.i2 {
-        display:block;
-    }
-    #map .t3:hover ~ div.i3 {
-        display:block;
-    }
-    */
     </style>
     <style type="text/css" id="mapcss">
     </style>
