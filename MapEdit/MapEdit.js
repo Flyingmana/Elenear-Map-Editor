@@ -144,7 +144,7 @@ var MapEdit = {
     // Speichern
     save : function (name ) 
     {
-        alert(this.mapJson.toSource());
+        window.document.getElementById("output").innerHTML=this.mapJson.toSource();
     }
 
 };
