@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-function mapGen () 
-    $w = array(16,32,64,128,256);
-    $h = array(8,16,32,64,128);
+function mapGen () {
+    $w = array(16,32,64,128,256,16,32,64,128,256);
+    $h = array(8,16,32,64,128,16,32,64,128,256);
     $proz = array(0.4,0.5); // letzter Wert ergibt sich
 
     foreach ($w as $k => $v)
@@ -27,6 +27,8 @@ function mapGen ()
         }
         $map=str_replace("],[","],\n[",json_encode($xd));
         file_put_contents('./maps/'.$name.'.json',$map);
+        if ($name == 'rand_128x64')
+        file_put_contents('./maps/default.js','var defmap='.$map);
     }
 }
 mapGen();
