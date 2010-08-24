@@ -9,25 +9,27 @@
     <script src="js/mapeditor.js" type="text/javascript" ></script>
   </head>
 <body onload="MapEdit.loadMap('maps/random 20x20.json');">
-MapEdit: 
-    <a onclick="alert('Anzeigegröße: '+MapEdit.mapWidth+'x'+MapEdit.mapHeight+' px');" href="#">Info</a> 
-    <a onclick="MapEdit.loadMap('maps/random 10x10.json');false;" href="#">10x10</a>
-    <a onclick="MapEdit.loadMap('maps/random 20x20.json');false;" href="#">25x25</a>
-    <a onclick="MapEdit.loadMap('maps/random 100x100.json');false;" href="#">100x100</a>
-    <a onclick="MapEdit.loadMap('maps/random 250x250.json');false;" href="#">250x250 (!)</a><br/>
-Zoom: 
-    <a onclick="MapEdit.changeSize(-200,-200);" href="#">--</a>
-    <a onclick="MapEdit.changeSize(-50,-50);" href="#">-</a>
-    <a onclick="MapEdit.changeSize(50,50);" href="#">+</a>
-    <a onclick="MapEdit.changeSize(200,200);" href="#">++</a><br/>
-Zoom: 
-    <a onclick="MapEdit.setSize(50,50);" href="#">25%</a> 
-    <a onclick="MapEdit.setSize(100,100);" href="#">50%</a> 
-    <a onclick="MapEdit.setSize(200,200);" href="#">100%</a>
-    <a onclick="MapEdit.setSize(400,400);" href="#">200%</a>
-    <a onclick="MapEdit.setSize(800,800);" href="#">400%</a>
-    <a onclick="MapEdit.setSize(1600,1600);" href="#">800%</a><br/>
-      <br/>
+    <div>
+        MapEdit:
+            <a onclick="alert('Anzeigegröße: '+MapEdit.mapWidth+'x'+MapEdit.mapHeight+' px');" href="#">Info</a>
+            <a onclick="MapEdit.loadMap('maps/random 10x10.json');false;" href="#">10x10</a>
+            <a onclick="MapEdit.loadMap('maps/random 20x20.json');false;" href="#">25x25</a>
+            <a onclick="MapEdit.loadMap('maps/random 100x100.json');false;" href="#">100x100</a>
+            <a onclick="MapEdit.loadMap('maps/random 250x250.json');false;" href="#">250x250 (!)</a><br/>
+        Zoom:
+            <a onclick="MapEdit.changeSize(-200,-200);" href="#">--</a>
+            <a onclick="MapEdit.changeSize(-50,-50);" href="#">-</a>
+            <a onclick="MapEdit.changeSize(50,50);" href="#">+</a>
+            <a onclick="MapEdit.changeSize(200,200);" href="#">++</a><br/>
+        Zoom:
+            <a onclick="MapEdit.setSize(50,50);" href="#">25%</a>
+            <a onclick="MapEdit.setSize(100,100);" href="#">50%</a>
+            <a onclick="MapEdit.setSize(200,200);" href="#">100%</a>
+            <a onclick="MapEdit.setSize(400,400);" href="#">200%</a>
+            <a onclick="MapEdit.setSize(800,800);" href="#">400%</a>
+            <a onclick="MapEdit.setSize(1600,1600);" href="#">800%</a><br/>
+              <br/>
+    </div>
       <div id="map_info"></div>
 
       <div id="map"></div>
